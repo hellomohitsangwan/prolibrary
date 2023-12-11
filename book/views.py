@@ -4,7 +4,12 @@ from .models import Book
 
 def homepageView(request):
     books = Book.objects.all()
+
+    if request.GET.get('sort') == 'price':
+        books = books.order_by('price')
+
     return render(request, "viewbook.html", {"books": books})
+
 
 def addBookView(request):
     return render(request, "addbook.html")
