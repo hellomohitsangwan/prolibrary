@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Book | Home{% endblock %}
+
+{% block content %}
+    <h1 class="mt-2">Edit Book</h1>
+
+    <form class="mt-4" action="/edit/edit" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="bid" value="{{ book.id }}">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title" value="{{ book.title }}">
+
+            <label for="price">Price</label>
+            <input type="text" class="form-control" id="price" placeholder="Enter Price" name="price" value="{{ book.price }}">
+
+            <!-- Category field -->
+            <label for="category">Category</label>
+            <input type="text" class="form-control" id="category" placeholder="Enter Category" name="category" value="{{ book.category }}">
+
+            <!-- Description field -->
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" placeholder="Enter Description" name="description" rows="3">{{ book.description }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
