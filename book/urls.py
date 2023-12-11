@@ -4,4 +4,5 @@ from .views import homepageView
 
 urlpatterns = [
     path('', homepageView),
+        path("add/",addBookView),
 ]
