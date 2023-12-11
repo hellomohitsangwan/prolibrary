@@ -10,6 +10,15 @@ def homepageView(request):
 
     return render(request, "viewbook.html", {"books": books})
 
+def searchView(request):
+    query = request.GET.get('query', '')
+    if query:
+        books = Book.objects.filter(title__icontains=query)
+    else:
+        books = Book.objects.all()
+
+    return render(request, 'search.html', {'books': books})
+
 
 def addBookView(request):
     return render(request, "addbook.html")
